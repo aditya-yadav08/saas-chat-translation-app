@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ClientProviders from "@/components/ClientProviders";
 import FirebaseAuthProvider from "@/components/FirebaseAuthProvider";
+import SubscriptionProvider from "@/components/SubscriptionProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Linguify",
@@ -20,15 +22,18 @@ export default function RootLayout({
       <html lang="en">
         <body className="flex flex-col min-h-screen">
           <FirebaseAuthProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Header />
-              {children}
-            </ThemeProvider>
+            <SubscriptionProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <Header />
+                {children}
+                <Toaster/>
+              </ThemeProvider>
+            </SubscriptionProvider>
           </FirebaseAuthProvider>
         </body>
       </html>

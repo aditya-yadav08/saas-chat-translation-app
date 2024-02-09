@@ -7,6 +7,8 @@ import { authOptions } from "@/auth"
 import Link from "next/link"
 import { MessagesSquareIcon } from "lucide-react"
 import CreateChatButton from "./CreateChatButton"
+import UpgradeBanner from "./UpgradeBanner"
+import LanguageSelect from "./LanguageSelect"
 
 async function Header() {
 
@@ -18,6 +20,7 @@ async function Header() {
         <Logo/>
 
         <div className="flex-1 flex items-center justify-end space-x-4">
+          <LanguageSelect/>
 
           {session ? (
             <>
@@ -27,7 +30,7 @@ async function Header() {
               >
                 <MessagesSquareIcon className="text-black dark:text-white"/>
               </Link>
-              <CreateChatButton />
+              <CreateChatButton/>
             </>
           ):(
             <Link href={'/pricing'}>
@@ -38,6 +41,7 @@ async function Header() {
           <UserButton session={session}/>
         </div>
       </nav>
+      <UpgradeBanner/>
     </header>
   )
 }
